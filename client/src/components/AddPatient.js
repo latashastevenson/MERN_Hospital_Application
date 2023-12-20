@@ -98,12 +98,7 @@ import {
             name="insurance"
           />
        
-          <FormControlLabel
-            control={
-              <Checkbox checked={checked} onChange={() => setChecked(!checked)} />
-            }
-            label="Discharged"
-          />
+          
   
           <Button variant="contained" type="submit">
             Add Patient

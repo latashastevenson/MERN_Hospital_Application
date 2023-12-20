@@ -1,12 +1,19 @@
 const express = require("express");
-
 const app = express();
-
 const mongoose = require("mongoose");
 
 mongoose.set('strictQuery', true);
 //define port
 const PORT = 3002
+app.use(express.json());
+
+const cors = require("cors");
+
+app.use(cors());
+
+const router = require("./Routes/patient-routes");             //localhost:3001/patient
+
+app.use("/patient", router)
 
 
 //establish link to mongoDB Atlas Database

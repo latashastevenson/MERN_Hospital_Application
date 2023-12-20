@@ -54,44 +54,27 @@ const getById = async (req, res, next) =>{
 
 
 
-const addPatient = async (req, res, next)=>{
-
-    const {name, dob, insurance, patient_id, discharged} = req.body;
-
+const addPatient = async (req, res)=>{
+    const {name, dob, insurance, patient_id, discharged} = req.body
     let patient;
-
     try{
-
         patient = new PatienSchema({
-
             name, 
-
             dob, 
-
             insurance, 
-
             patient_id, 
-
             discharged
 
         });
 
         await patient.save();
-
     }catch(err){
-
         console.log(err)
-
     }
-
     if(!patient){
-
         return res.status(500).json({message : "Unable to Add Patient"})
-
     }
-
     return res.status(201).json({patient})
-
 };
 
 // create function to update a value based on it ID. 
@@ -150,7 +133,7 @@ const deletePatient = async (req,res, next) => {
 
     try{
 
-        patient = await PatienSchema.findByIdAndRemove(id);
+        patient = await PatienSchema.findByIdAndDelete(id);
 
     } catch(err){
 
